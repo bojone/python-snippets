@@ -1,7 +1,5 @@
 #! -*- coding: utf-8 -*-
 
-import logging
-
 
 class Progress:
     """显示进度，自己简单封装，比tqdm更可控一些
@@ -23,6 +21,8 @@ class Progress:
             self._format_ = u'%s passed'
         if self.desc:
             self._format_ = self.desc + ' - ' + self._format_
+
+        import logging
         self.logger = logging.getLogger()
 
     def __iter__(self):
