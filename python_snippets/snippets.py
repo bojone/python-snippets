@@ -1,5 +1,18 @@
 #! -*- coding: utf-8 -*-
 
+import six
+import logging
+
+
+if not six.PY2:
+    basestring = str
+
+
+def is_string(s):
+    """判断是否是字符串
+    """
+    return isinstance(s, basestring)
+
 
 class Progress:
     """显示进度，自己简单封装，比tqdm更可控一些
@@ -21,8 +34,6 @@ class Progress:
             self._format_ = u'%s passed'
         if self.desc:
             self._format_ = self.desc + ' - ' + self._format_
-
-        import logging
         self.logger = logging.getLogger()
 
     def __iter__(self):
@@ -97,3 +108,12 @@ def parallel_apply(func,
 
     if callback is None:
         return results
+
+
+def get_all_attributes(something):
+    """获取类下的所有属性和方法
+    """
+    return {
+        name: getattr(something, name)
+        for name in dir(something) if name[:2] != '__' and name[-2:] != '__'
+    }
