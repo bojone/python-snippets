@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='python_snippets',
-    version='0.0.1',
+    version='0.0.2',
     description='一些常用的python代码合集',
     license='MIT Licence',
     url='https://kexue.fm',
